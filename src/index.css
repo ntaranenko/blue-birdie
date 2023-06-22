@@ -7,6 +7,11 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Montserrat Regular",
     "Montserrat Medium", sans-serif;
+  background-image: url("./assets/images/background.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 ul,
