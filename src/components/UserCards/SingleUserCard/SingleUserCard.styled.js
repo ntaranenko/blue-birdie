@@ -77,15 +77,12 @@ export const StyledButton = styled.button`
   font-size: ${({ theme }) => theme.fs.s};
   font-weight: 600;
   color: ${({ theme }) => theme.colors.primaryButtonTextColor};
-  transition: background-color 250ms ease;
+  transition: background-color 250ms ease, transform 250ms ease;
 
-  :hover {
-    background-color: ${({ theme, isFollowing }) =>
-      isFollowing ? theme.colors.accent : theme.colors.primaryColor};
-  }
-
+  :hover,
   :focus {
     background-color: ${({ theme, isFollowing }) =>
       isFollowing ? theme.colors.accent : theme.colors.primaryColor};
+    transform: scale(0.95);
   }
 `;

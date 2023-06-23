@@ -15,10 +15,11 @@ export const StyledButton = styled.button`
   font-size: ${({ theme }) => theme.fs.s};
   font-weight: 600;
   color: ${({ theme }) => theme.colors.primaryButtonTextColor};
-  transition: background-color 250ms ease;
+  transition: background-color 250ms ease, transform 250ms ease;
 
   :hover,
   :focus {
+    transform: scale(0.95);
     background-color: ${({ theme }) => theme.colors.accent};
   }
 `;
