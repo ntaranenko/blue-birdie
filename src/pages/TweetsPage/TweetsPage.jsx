@@ -1,5 +1,19 @@
+import { useState, useEffect } from "react";
+import { fetchUsers } from "../../helpers/api";
+import UserCards from "../../components/UserCards/UserCards";
+
 const TweetsPage = () => {
-  return <div>TweetsPage</div>;
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchUsers();
+      setUsers(data);
+    };
+    fetchData();
+  }, []);
+
+  return <UserCards users={users} />;
 };
 
 export default TweetsPage;
