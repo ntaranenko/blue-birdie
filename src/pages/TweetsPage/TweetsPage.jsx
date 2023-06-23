@@ -13,7 +13,7 @@ const TweetsPage = () => {
     fetchData();
   }, []);
 
-  return <UserCards users={users} />;
+  return <>{users?.length > 0 && <UserCards users={users} />}</>;
 };
 
 export default TweetsPage;

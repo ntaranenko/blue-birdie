@@ -5,5 +5,5 @@ export const StyledUserCards = styled.ul`
   grid-template-columns: repeat(auto-fit, 380px);
   justify-content: center;
   gap: 28px;
-  padding: 80px 24px;
+  padding: 80px 24px 28px 24px;
 `;
