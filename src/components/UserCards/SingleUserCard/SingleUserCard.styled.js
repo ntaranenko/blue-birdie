@@ -72,14 +72,20 @@ export const StyledButton = styled.button`
   text-transform: uppercase;
   box-shadow: ${({ theme }) => theme.shadows.buttonShadow};
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.primaryColor};
+  background-color: ${({ theme, isFollowing }) =>
+    isFollowing ? theme.colors.accent : theme.colors.primaryColor};
   font-size: ${({ theme }) => theme.fs.s};
   font-weight: 600;
   color: ${({ theme }) => theme.colors.primaryButtonTextColor};
   transition: background-color 250ms ease;
 
-  :hover,
+  :hover {
+    background-color: ${({ theme, isFollowing }) =>
+      isFollowing ? theme.colors.accent : theme.colors.primaryColor};
+  }
+
   :focus {
-    background-color: ${({ theme }) => theme.colors.accent};
+    background-color: ${({ theme, isFollowing }) =>
+      isFollowing ? theme.colors.accent : theme.colors.primaryColor};
   }
 `;

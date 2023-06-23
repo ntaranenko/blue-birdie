@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import logo from "../../../assets/images/logo.svg";
 import cardImage from "../../../assets/images/card-image.svg";
@@ -16,6 +17,30 @@ import {
 } from "./SingleUserCard.styled";
 
 const SingleUserCard = ({ id, user, avatar, tweets, followers }) => {
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [followersAmount, setFollowersAmount] = useState(followers);
+
+  useEffect(() => {
+    const currentFollowersAmount = localStorage.getItem(
+      `I am following ${user}`
+    );
+    if (currentFollowersAmount === "true") {
+      setIsFollowing(true);
+      setFollowersAmount(followersAmount + 1);
+    }
+  }, [id]);
+
+  const handleFollow = () => {
+    setIsFollowing(!isFollowing);
+    if (!isFollowing) {
+      localStorage.setItem(`I am following ${user}`, "true");
+      setFollowersAmount(followersAmount + 1);
+    } else {
+      localStorage.removeItem(`I am following ${user}`);
+      setFollowersAmount(followersAmount - 1);
+    }
+  };
+
   const formattedFollowersAmount = followers
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -32,7 +57,9 @@ const SingleUserCard = ({ id, user, avatar, tweets, followers }) => {
         <StyledTweets>{tweets} Tweets</StyledTweets>
         <StyledFollowers>{formattedFollowersAmount} Followers</StyledFollowers>
       </StyledInfoContainer>
-      <StyledButton>Follow</StyledButton>
+      <StyledButton isFollowing={isFollowing} onClick={handleFollow}>
+        {isFollowing ? "Following" : "Follow"}
+      </StyledButton>
     </StyledUserCard>
   );
 };
